@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="styles/style.css">
@@ -15,7 +14,16 @@
 				<input class="input-txt" type="text" name="horizontal" value="1">
 				<label class="lbl">Vertical</label>
 				<input class="input-txt" type="text" name="vertical" value="1">
-				<input class="submit-btn" type="button" name="submit" value="Generate" onclick="getVals();genSq();genDim();">
+				<input class="submit-btn" type="button" name="submit" value="Generate" onclick="getVals();genSq();genDim();"></form><br>
+				<div class="hover-options">
+					<input class="opt-btn" value="W/B" type="button" name="WB" onclick="hoverWB();">
+					<input class="opt-btn" value="Random" type="button" name="Rdm" onclick="hoverRdm();">
+					<input class="opt-btn" value="Opacity" type="button" name="opacity" onclick="gg();">
+					<input class="opt-btn" type="button" value="trail" name="trail" onclick="trailToggle();">
+					<label id="on" class="trail-status">ON</label>
+					<label id="off" class="trail-status">OFF</label>
+					<div class="rdm"> </div>
+				</div>
 			</form>
 		</div>
 		<div class="grid-area">
