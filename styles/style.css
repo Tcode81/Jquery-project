@@ -84,7 +84,7 @@ br {
 
 .hover-options {
 	margin: 0 auto;
-	width: 370px;
+	width: 460px;
 }
 
 .trail-status {
@@ -120,4 +120,7 @@ br {
 .trail-class{
 	transition: background-color 1s ease-in-out;
 	background-color: white;
+}
+.active {
+	background-color: red;
 }

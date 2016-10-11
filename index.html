@@ -16,10 +16,11 @@
 				<input class="input-txt" type="text" name="vertical" value="1">
 				<input class="submit-btn" type="button" name="submit" value="Generate" onclick="getVals();genSq();genDim();"></form><br>
 				<div class="hover-options">
-					<input class="opt-btn" value="W/B" type="button" name="WB" onclick="hoverWB();">
-					<input class="opt-btn" value="Random" type="button" name="Rdm" onclick="hoverRdm();">
-					<input class="opt-btn" value="Opacity" type="button" name="opacity" onclick="opticInc();">
-					<input class="opt-btn" type="button" value="trail" name="trail" onclick="trailToggle();">
+					<input id="WB-btn" class="opt-btn" value="W/B" type="button" name="WB" onclick="stickyToggleWB();">
+					<input id="rdm-btn" class="opt-btn" value="Random" type="button" name="Rdm" onclick="stickyToggleRdm();">
+					<input id="op-btn" class="opt-btn" value="Opacity" type="button" name="opacity" onclick="opticInc();">
+					<input id="trail-btn" class="opt-btn" type="button" value="Add Trail" name="trail" onclick="trailToggle();">
+					<input id="sticky-btn" class="opt-btn" type="button" value="Add Sticky" name="trail" onclick="stickyToggle();">
 					<label id="on" class="trail-status">ON</label>
 					<label id="off" class="trail-status">OFF</label>
 					<div class="rdm"> </div>

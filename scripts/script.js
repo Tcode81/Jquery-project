@@ -1,5 +1,7 @@
 trailCheck = false;
-
+stickyCheck = false;
+WBCheck = false;
+rdmCheck = false;
 $(document).ready(function() {
 	clearGrid();
 	$("#off").show();	
@@ -59,6 +61,10 @@ function genColor() {
 } 
 
 function trailToggle() {
+	$("#trail-btn").addClass("active");
+	$("#sticky-btn").removeClass("active");
+	stickyCheck = false;
+	removeSticky();
 	if (trailCheck) {
 		removeTrail();		
 		trailCheck = false;
@@ -93,7 +99,7 @@ function hoverRdm() {
 	$(".grid-area>div").css("background-color", "rgba(0,0,0,0)");
 	$(".grid-area>div").mouseenter(function() {
 		genColor();
-		$(this).css("background-color", rdmColor)
+		$(this).css("background-color", rdmColor);
 		$(".rdm").text($(this).css("background-color"));
 		$(".rdm").css("background-color",$(this).css("background-color"));	
 	});
@@ -227,4 +233,75 @@ function backgroundCGet() {
 		blackDegEntAlphaChecked = String(alphaNum[0]+alphaNum[1]+alphaNum[2]+alphaNum[3]);
 		Number(blackDegEntAlphaChecked);
 	}
+}
+
+function hoverWBStick() {
+	$(".grid-area>div").css("background-color", "rgba(0,0,0,0)");
+	$(".grid-area>div").mouseenter(function() {
+		$(this).css("background-color", "black");
+		$(".rdm").text($(this).css("background-color"));
+		$(".rdm").css("background-color",$(this).css("background-color"));
+	});
+	$(".grid-area>div").mouseleave(function() {
+		$(this).css("background-color", "black");
+	});
+}
+
+function hoverRdmStick() {
+	$(".grid-area>div").css("background-color", "rgba(0,0,0,0)");
+	$(".grid-area>div").mouseenter(function() {
+		genColor();
+		$(this).css("background-color", rdmColor);
+		$(".rdm").text($(this).css("background-color"));
+		$(".rdm").css("background-color",$(this).css("background-color"));	
+	});
+	$(".grid-area>div").mouseleave(function() {
+		$(this).css("background-color", rdmColor);
+	});
+}
+
+function stickyToggle() {
+	$("#trail-btn").removeClass("active");
+	$("#sticky-btn").addClass("active");
+	trailCheck = false;
+	removeTrail();
+	if (stickyCheck) {
+		stickyCheck = false;
+		$("#on").hide();
+		$("#off").show();
+			if (WBCheck) {hoverWB();} else if (rdmCheck) {hoverRdm();}
+	} else {
+		stickyCheck = true;
+		$("#on").show();
+		$("#off").hide();
+			if (WBCheck) {hoverWBStick();} else if (rdmCheck) {hoverRdmStick();}
+	}
+}
+
+function stickyToggleWB() {
+	$("#rdm-btn").removeClass("active");
+	$("#WB-btn").addClass("active");
+	WBCheck = true;
+	rdmCheck = false;
+	if (stickyCheck) {
+		hoverWBStick();
+	} else {
+		hoverWB();
+	}
+}
+
+function stickyToggleRdm() {
+	$("#rdm-btn").addClass("active");
+	$("#WB-btn").removeClass("active");
+	rdmCheck = true;
+	WBCheck = false;
+	if (stickyCheck) {
+		hoverRdmStick();
+	} else {
+		hoverRdm();
+	}
+}
+
+function removeSticky() {
+	if (WBCheck) {hoverWB();} else if (rdmCheck) {hoverRdm();}
 }
