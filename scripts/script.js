@@ -1,14 +1,16 @@
 trailCheck = false;
-blackDeg = " ";
+
 $(document).ready(function() {
+	clearGrid();
+	$("#off").show();	
+});
+
+function clearGrid() {
 	verVal=16;
 	hozVal=16;
 	genSq();
 	genDim();
-	$("#off").show();
-	
-
-});
+}
 
 function getVals() {
     var hozGet = +$("input[name=horizontal]").val();
@@ -76,6 +78,7 @@ function dispCname() {
 }
 
 function hoverWB() {
+	$(".grid-area>div").css("background-color", "rgba(0,0,0,0)");
 	$(".grid-area>div").mouseenter(function() {
 		$(this).css("background-color", "black");
 		$(".rdm").text($(this).css("background-color"));
@@ -87,6 +90,7 @@ function hoverWB() {
 }
 
 function hoverRdm() {
+	$(".grid-area>div").css("background-color", "rgba(0,0,0,0)");
 	$(".grid-area>div").mouseenter(function() {
 		genColor();
 		$(this).css("background-color", rdmColor)
@@ -117,98 +121,110 @@ function removeTrail() {
 	});
 }
 
-function alphaPick() {
-	switch(blackDeg) {
-    case "rbga(0, 0, 0, 0)":
-        $(this).css("background-color", "rgba(0,0,0,0.1)");
-        break;
-    case "rbga(0, 0, 0, 0.1)":
-        $(this).css("background-color", "rgba(0,0,0,0.2)");
-        break;
-        case "rbga(0, 0, 0, 0.2)":
-        $(this).css("background-color", "rgba(0,0,0,0.3)");
-        break;
-    case "rbga(0, 0, 0, 0.3)":
-        $(this).css("background-color", "rgba(0,0,0,0.4)");
-        break;
-        case "rbga(0, 0, 0, 0.4)":
-        $(this).css("background-color", "rgba(0,0,0,0.5)");
-        break;
-    case "rbga(0, 0, 0, 0.5)":
-        $(this).css("background-color", "rgba(0,0,0,0.6)");
-        break;
-        case "rbga(0, 0, 0, 0.6)":
-        $(this).css("background-color", "rgba(0,0,0,0.7)");
-        break;
-    case "rbga(0, 0, 0, 0.7)":
-        $(this).css("background-color", "rgba(0,0,0,0.8)");
-        break;
-        case "rbga(0, 0, 0, 0.8)":
-        $(this).css("background-color", "rgba(0,0,0,0.9)");
-        break;
-    case "rbga(0, 0, 0, 0.9)":
-        $(this).css("background-color", "rgba(0,0,0,1)");
-        break;
-    case "rbga(0, 0, 0, 1)":
-        break;
-    default: 
-        $(this).css("background-color", "rgba(0,0,0,0)");
-	}
-}
-
-function gg() {
-	
+function opticInc() {
+	clearGrid();
+	$(".grid-area>div").css("background-color", "rgba(0,0,0,0)");
 	$(".grid-area>div").mouseenter(function() {
 		blackDegEnt = $(this).css("background-color");
-		switch(blackDegEnt) {
-   	 		case "rgba(0, 0, 0, 0)":
-        		$(this).css("background-color", "rgba(0,0,0,0.1)");
-        		blackDegExt = "rgba(0,0,0,0.1)";
-        		break;
-    		case "rgba(0, 0, 0, 0.1)":
-        		$(this).css("background-color", "rgba(0,0,0,0.2)");
-        		blackDegExt = "rgba(0,0,0,0.2)";
-        		break;
-        	case "rgba(0, 0, 0, 0.2)":
-        		$(this).css("background-color", "rgba(0,0,0,0.3)");
-        		blackDegExt = "rgba(0,0,0,0.3)";
-        		break;
-    		case "rgba(0, 0, 0, 0.3)":
-        		$(this).css("background-color", "rgba(0,0,0,0.4)");
-        		blackDegExt = "rgba(0,0,0,0.4)";
-        		break;
-        	case "rgba(0, 0, 0, 0.4)":
-        		$(this).css("background-color", "rgba(0,0,0,0.5)");
-        		blackDegExt = "rgba(0,0,0,0.5)";
-        		break;
-    		case "rgba(0, 0, 0, 0.5)":
-        		$(this).css("background-color", "rgba(0,0,0,0.6)");
-        		blackDegExt = "rgba(0,0,0,0.6)";
-        		break;
-        	case "rgba(0, 0, 0, 0.6)":
-        		$(this).css("background-color", "rgba(0,0,0,0.7)");
-        		blackDegExt = "rgba(0,0,0,0.7)";
-        		break;
-    		case "rgba(0, 0, 0, 0.7)":
-        		$(this).css("background-color", "rgba(0,0,0,0.8)");
-        		blackDegExt = "rgba(0,0,0,0.8)";
-        		break;
-        	case "rgba(0, 0, 0, 0.8)":
-        		$(this).css("background-color", "rgba(0,0,0,0.9)");
-        		blackDegExt = "rgba(0,0,0,0.9)";
-        		break;
-    		case "rgba(0, 0, 0, 0.9)":
-        		$(this).css("background-color", "rgba(0,0,0,1)");
-        		blackDegExt = "rgba(0,0,0,1)";
-        		break;
-    		case "rgba(0, 0, 0, 1)":
-    			blackDegExt = "rgba(0,0,0,0.1)";
-        		break;
-    		default: 
-        		$(this).css("background-color", "rgba(0,0,0,0)");
+		blackDegEntAlpha = blackDegEnt[14]+blackDegEnt[15]+blackDegEnt[16]+blackDegEnt[17];
+		backgroundCGet();
+		switch (blackDegEntAlphaChecked) {
+			case "0":
+				$(this).css("background-color","rgba(0,0,0,0.1)");
+				blackDegExt = "rgba(0,0,0,0.1)";
+				$(".rdm").text("10%");
+				$(".rdm").css("background-color",$(this).css("background-color"));
+				break;
+			case "0.09":
+				$(this).css("background-color","rgba(0,0,0,0.2)");
+				blackDegExt = "rgba(0,0,0,0.2)";
+				$(".rdm").text("20%");
+				$(".rdm").css("background-color",$(this).css("background-color"));
+				break;
+			case "0.2":
+				$(this).css("background-color","rgba(0,0,0,0.3)");
+				blackDegExt = "rgba(0,0,0,0.3)";
+				$(".rdm").text("30%");
+				$(".rdm").css("background-color",$(this).css("background-color"));
+				break;
+			case "0.29":
+				$(this).css("background-color","rgba(0,0,0,0.4)");
+				blackDegExt = "rgba(0,0,0,0.4)";
+				$(".rdm").text("40%");
+				$(".rdm").css("background-color",$(this).css("background-color"));
+				break;
+			case "0.4":
+				$(this).css("background-color","rgba(0,0,0,0.5)");
+				blackDegExt = "rgba(0,0,0,0.5)";
+				$(".rdm").text("50%");
+				$(".rdm").css("background-color",$(this).css("background-color"));
+				break;
+			case "0.49":
+				$(this).css("background-color","rgba(0,0,0,0.6)");
+				blackDegExt = "rgba(0,0,0,0.6)";
+				$(".rdm").text("60%");
+				$(".rdm").css("background-color",$(this).css("background-color"));
+				break;
+			case "0.6":
+				$(this).css("background-color","rgba(0,0,0,0.7)");
+				blackDegExt = "rgba(0,0,0,0.7)";
+				$(".rdm").text("70%");
+				$(".rdm").css("background-color",$(this).css("background-color"));
+				break;
+			case "0.70":
+				$(this).css("background-color","rgba(0,0,0,0.8)");
+				blackDegExt = "rgba(0,0,0,0.8)";
+				$(".rdm").text("80%");
+				$(".rdm").css("background-color",$(this).css("background-color"));
+				break;
+			case "0.8":
+				$(this).css("background-color","rgba(0,0,0,0.9)");
+				blackDegExt = "rgba(0,0,0,0.9)";
+				$(".rdm").text("90%");
+				$(".rdm").css("background-color",$(this).css("background-color"));
+				break;
+			case "0.90":
+				$(this).css("background-color","rgba(0,0,0,1)");
+				blackDegExt = "rgba(0,0,0,1)";
+				$(".rdm").text("100%");
+				$(".rdm").css("background-color",$(this).css("background-color"));
+				break;
+			case "undefined":
+				$(this).css("background-color","rgba(0,0,0,1)");
+				blackDegExt = "rgba(0,0,0,1)";
+				$(".rdm").text("100%");
+				$(".rdm").css("background-color",$(this).css("background-color"));
+				break;
+			default:
+				$(this).css("background-color","rgba(0,0,0,0)");
+				blackDegExt = "rgba(0,0,0,0)"
 		}
+
 	});
+		
 	$(".grid-area>div").mouseleave(function() {
 		$(this).css("background-color", blackDegExt);
 	});
+}
+
+function backgroundCGet() {
+	alphaNum = new Array;
+	blackDegEntAlphaChecked=1;
+ 	for(var i=0; i<blackDegEntAlpha.length;i++) {
+ 		if (blackDegEntAlpha[i] !== ")") {
+ 			alphaNum[i] = blackDegEntAlpha[i];
+ 		}
+	}
+
+	if (typeof alphaNum[1]=== "undefined") {
+		blackDegEntAlphaChecked = String(alphaNum[0]);
+		Number(blackDegEntAlphaChecked);
+	} 
+	else if (typeof alphaNum[3]=== "undefined") {
+		blackDegEntAlphaChecked = String(alphaNum[0]+alphaNum[1]+alphaNum[2]);
+		Number(blackDegEntAlphaChecked);
+	} else {
+		blackDegEntAlphaChecked = String(alphaNum[0]+alphaNum[1]+alphaNum[2]+alphaNum[3]);
+		Number(blackDegEntAlphaChecked);
+	}
 }
